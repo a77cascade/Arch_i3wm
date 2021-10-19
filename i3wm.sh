@@ -113,5 +113,4 @@ pacstrap /mnt base base-devel linux linux-firmware nano tor dhcpcd netctl dkms
 
 echo 'System Setup'
 genfstab -pU /mnt >> /mnt/etc/fstab
-
-arch-chroot /mnt sh -c "$(curl -fsSL git.io/archuefi.sh)"
+arch-chroot /mnt sh -c "$(curl -fsSL git.io/i3wm2.sh)"
