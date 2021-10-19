@@ -1,1 +1,1 @@
-# Установка i3-wm и i3status на Arch linux
+# Auto skript Install Arch linux i3-wm polibar
