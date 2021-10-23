@@ -47,6 +47,7 @@ echo "Let's uncomment the multilib repository To run 32-bit applications on a 64
 echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 sudo pacman -Syy
+wget git.io/yay-install.sh && sh yay-install.sh --noconfirm
 
 echo 'Install X11 draver'
 sudo pacman -S xorg-server xorg-drivers xorg-xinit xorg-apps mesa xorg-twm xorg-xclock xorg xf86-input-synaptics vulkan-intel vulkan-icd-loader intel-ucode iucode-tool broadcom-wl-dkms
@@ -54,8 +55,8 @@ sudo pacman -S xorg-server xorg-drivers xorg-xinit xorg-apps mesa xorg-twm xorg-
 echo "Install I3-wm "
 read -p "1-Y, 2-N: " wm
 if [[ $wm == 1 ]]; then
-    sudo pacman -S i3-wm dmenu pcmanfm conky conky-manager ttf-font-awesome feh gvfs udiskie xorg-xbacklight bpytop ristretto rofi pamac micro nitrogen compton jq --noconfirm
-    yay -S polybar ttf-weather-icons ttf-clear-sans
+    yay -S i3-wm dmenu conky conky-manager gvfs udiskie xorg-xbacklight bpytop ristretto rofi micro nitrogen alacritty termite compton jq --noconfirm
+    yay -S polybar 
     wget https://github.com/a77cascade/Arch_i3wm/raw/master/i3wm.tar.gz
     sudo rm -rf ~/.config/i3/*
     sudo rm -rf ~/.config/polybar/*
@@ -64,15 +65,20 @@ elif [[ $wm == 2 ]]; then
   echo 'Next'
 fi
 
-echo 'Install program'
-sudo pacman -S reflector chromium veracrypt libreoffice libreoffice-fresh-ru qbittorrent firefox firefox-i18n-ru ufw f2fs-tools dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs aspell-ru pulseaudio pavucontrol --noconfirm
+echo "Install program"
+read -p "1-Y, 2-N: " wm
+if [[ $wm == 1 ]]; then
+    yay -Syu reflector chromium veracrypt pcmanfm pamac libreoffice libreoffice-fresh-ru xpdf feh qbittorrent firefox firefox-i18n-ru ufw f2fs-tools dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs aspell-ru pulseaudio pavucontrol --noconfirm
+elif [[ $wm == 2 ]]; then
+  echo 'Next'
+fi
 
 echo 'Install DM'
 sudo pacman -S lightdm lightdm-gtk-greeter
 systemctl enable lightdm.service
 
 echo 'Install ttf'
-sudo pacman -S ttf-liberation ttf-dejavu noto-fonts ttf-roboto ttf-droid
+sudo pacman -S ttf-liberation ttf-dejavu noto-fonts ttf-roboto ttf-droid ttf-font-awesome ttf-weather-icons ttf-clear-sans
 
 echo 'Install NetworkManager'
 sudo pacman -S networkmanager net-tools network-manager-applet ppp 
