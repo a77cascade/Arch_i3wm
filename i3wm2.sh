@@ -52,11 +52,11 @@ echo 'Install X11 draver'
 sudo pacman -S xorg-server xorg-drivers xorg-xinit xorg-apps mesa xorg-twm xorg-xclock xorg xf86-input-synaptics vulkan-intel vulkan-icd-loader intel-ucode iucode-tool broadcom-wl-dkms
 
 echo "Install I3-wm "
-read -p "1 - Да, 2 - Нет: " wm
+read -p "1-Y, 2-N: " wm
 if [[ $wm == 1 ]]; then
-    sudo pacman -S i3-wm dmenu pcmanfm conky conky-manager ttf-font-awesome feh gvfs udiskie xorg-xbacklight ristretto rofi pamac micro nitrogen compton jq --noconfirm
+    sudo pacman -S i3-wm dmenu pcmanfm conky conky-manager ttf-font-awesome feh gvfs udiskie xorg-xbacklight bpytop ristretto rofi pamac micro nitrogen compton jq --noconfirm
     yay -S polybar ttf-weather-icons ttf-clear-sans
-    wget https://github.com/a77cascade/Arch_i3wm/blob/master/i3wm.tar.gz
+    wget https://github.com/a77cascade/Arch_i3wm/raw/master/i3wm.tar.gz
     sudo rm -rf ~/.config/i3/*
     sudo rm -rf ~/.config/polybar/*
     sudo tar -xzf i3wm.tar.gz -C ~/
