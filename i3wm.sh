@@ -7,81 +7,12 @@ setfont cyr-sun16
 echo 'Temp'
 timedatectl set-ntp true
 
-echo 'Setup sda'
-(
- echo g;
-
-#sda1 '/bin/uefi'
- echo n;
- echo ;
- echo;
- echo +500M;
- echo y;
- echo t;
- echo 1;
-
-#sda2 '/'
- echo n;
- echo;
- echo;
- echo +30G;
- echo y;
-
-#sda3 'swap'
- echo n;
- echo;
- echo;
- echo +8G;
- echo y;
-
-#sda4 '/home'
- echo n;
- echo;
- echo;
- echo +100G;
- echo y;
-
-#sda5 '/abook'
- echo n;
- echo;
- echo;
- echo +300G;
- echo y;
-
-#sda6 '/usr'
- echo n;
- echo;
- echo;
- echo +12G;
- echo y;
-
-#sda7 '/var'
- echo n;
- echo;
- echo;
- echo +4G;
- echo y;
-
-#sda8 '/tmp'
- echo n;
- echo;
- echo;
- echo;
- echo y;
-  
- echo w;
-) | fdisk /dev/sda
-
-echo 'Exit sda'
-fdisk -l
-
 echo 'Formatted sda'
 mkfs.fat -F32 /dev/sda1
 mkfs.jfs  /dev/sda2
 mkswap /dev/sda3
 swapon /dev/sda3
 mkfs.jfs  /dev/sda4
-mkfs.jfs  /dev/sda5
 mkfs.reiserfs  /dev/sda6
 mkfs.reiserfs  /dev/sda7
 mkfs.reiserfs  /dev/sda8
